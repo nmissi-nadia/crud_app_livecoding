@@ -42,9 +42,14 @@
                             html += `
                                 <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg shadow-sm">
                                     <span class="text-gray-700">${item.name}</span>
-                                    <button class="deleteBtn bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition duration-200" data-id='${item.id}'>
-                                        Supprimer
-                                    </button>
+                                    <div>
+                                        <button class="editBtn bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition duration-200" onclick="editItem(${item.id}, '${item.name}')">
+                                            Éditer
+                                        </button>
+                                        <button class="deleteBtn bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition duration-200" data-id='${item.id}'>
+                                            Supprimer
+                                        </button>
+                                    </div>
                                 </div>`;
                         });
                         $('#items').html(html);
@@ -56,6 +61,26 @@
                     console.error("Erreur lors du chargement des éléments : ", error);
                 }
             });
+        }
+        function editItem(id, name) {
+            const newName = prompt('Modifier le nom de l\'élément:', name);
+            if (newName) {
+                $.ajax({
+                    url: '../../public/api.php?action=update',
+                    method: 'POST',
+                    data: { id: id, name: newName },
+                    success: function (response) {
+                        if (response.success) {
+                            loadItems(); 
+                        } else {
+                            console.error("Erreur lors de la mise à jour de l'élément : ", response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Erreur lors de la mise à jour de l'élément : ", error);
+                    }
+                });
+            }
         }
 
         // Ajouter un élément

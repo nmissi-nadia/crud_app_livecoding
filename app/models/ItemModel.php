@@ -19,5 +19,10 @@ class ItemModel {
         $stmt = $db->prepare("DELETE FROM items WHERE id = ?");
         return $stmt->execute([$id]);
     }
+    public static function update($id, $name) {
+        $db = Database::connect();
+        $stmt = $db->prepare("UPDATE items SET name = ? WHERE id = ?");
+        return $stmt->execute([$name, $id]);
+    }
 }
 ?>
