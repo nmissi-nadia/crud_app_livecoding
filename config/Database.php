@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private static $dbHost = 'localhost';  // Remplacez par votre hôte (par défaut : localhost)
-    private static $dbName = 'crud_app';  // Remplacez par le nom de votre base de données
-    private static $dbUser = 'root';  // Remplacez par votre utilisateur MySQL
-    private static $dbPass = '';  // Remplacez par votre mot de passe MySQL
+    private static $dbHost = 'localhost'; 
+    private static $dbName = 'crud_app'; 
+    private static $dbUser = 'root';  
+    private static $dbPass = '';  
     private static $connection = null;
 
     public static function connect() {

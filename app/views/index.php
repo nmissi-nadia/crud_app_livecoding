@@ -24,7 +24,7 @@
         </form>
 
         <div id="items" class="space-y-4">
-            <!-- Les éléments seront chargés ici -->
+           
         </div>
     </div>
 

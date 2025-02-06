@@ -1,5 +1,6 @@
 <?php
 require_once '../models/ItemModel.php';
+
 header('Content-Type: application/json');
 
 class ItemController {
@@ -19,7 +20,7 @@ class ItemController {
 
             case 'read':
                     $items = $this->model->readAll();
-                    error_log(print_r($items, true));
+
                     echo json_encode(['success' => true, 'data' => $items]);
                     break;
 
@@ -33,7 +34,7 @@ class ItemController {
             case 'delete':
                 $id = $_POST['id'] ?? 0;
                 $result = $this->model->delete($id);
-                echo json_encode(['success' => $result]);
+                echo json_encode(['message' => 'item deleted']);
                 break;
 
             default:
