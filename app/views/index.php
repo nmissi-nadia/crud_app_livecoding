@@ -82,8 +82,6 @@
                 });
             }
         }
-
-        // Ajouter un élément
         $('#addForm').submit(function (e) {
             e.preventDefault();
             $.ajax({
@@ -110,8 +108,6 @@
                 }
             });
         });
-
-        // Charger les éléments au démarrage
         loadItems();
     </script>
 </body>
