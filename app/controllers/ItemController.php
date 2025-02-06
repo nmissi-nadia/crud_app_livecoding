@@ -14,7 +14,7 @@ class ItemController {
             case 'create':
                 $name = $_POST['name'] ?? '';
                 $result = $this->model->create($name);
-                echo json_encode(['success' => $result, 'message' => $result ? 'Item créé avec succès.' : 'Erreur lors de la création de l\'élément.']);
+                echo json_encode(['success' => $result]);
                 break;
 
             case 'read':
@@ -27,13 +27,13 @@ class ItemController {
                 $id = $_POST['id'] ?? 0;
                 $name = $_POST['name'] ?? '';
                 $result = $this->model->update($id, $name);
-                echo json_encode(['success' => $result, 'message' => $result ? 'Item mis à jour avec succès.' : 'Erreur lors de la mise à jour de l\'élément.']);
+                echo json_encode(['success' => $result]);
                 break;
 
             case 'delete':
                 $id = $_POST['id'] ?? 0;
                 $result = $this->model->delete($id);
-                echo json_encode(['success' => $result, 'message' => $result ? 'Item supprimé avec succès.' : 'Erreur lors de la suppression de l\'élément.']);
+                echo json_encode(['success' => $result]);
                 break;
 
             default:
