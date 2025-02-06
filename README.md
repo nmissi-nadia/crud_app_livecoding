@@ -1,16 +1,16 @@
 # crud_app_livecoding
 Application CRUD en utilisant PHP avec MVC et Ajax pour les interactions sans rechargement de page.
-# CRUD Application with PHP, MVC, and Ajax
+# application CRUD avec PHP, MVC, et Ajax
 
 ## Description
-This is a simple CRUD application built using PHP, following the MVC architecture. It uses Ajax for seamless interactions without reloading the page.
+Il s'agit d'une simple application CRUD construite en PHP, suivant l'architecture MVC. Il utilise Ajax pour des interactions transparentes sans recharger la page.
 
 ## Features
-- Add, edit, delete, and fetch items in real-time using Ajax.
-- MVC architecture for clean and scalable code.
+- Ajouter, éditer, supprimer et récupérer des éléments en temps réel avec Ajax.
+- Architecture MVC pour un code propre et scalable.
 
 ## Setup
-1. Create a database and table:
+1. Créer une base de données et une table :
    ```sql
    CREATE DATABASE crud_app;
    USE crud_app;
