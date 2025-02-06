@@ -23,7 +23,6 @@
             </div>
         </form>
 
-        <!-- Liste des éléments -->
         <div id="items" class="space-y-4">
             <!-- Les éléments seront chargés ici -->
         </div>
@@ -33,7 +32,7 @@
         // Charger les éléments
         function loadItems() {
             $.ajax({
-                url: '../../public/api.php?action=read',
+                url: '../controllers/ItemController.php?action=read',
                 method: 'GET',
                 success: function (response) {
                     if (response.success) {
@@ -66,7 +65,7 @@
             const newName = prompt('Modifier le nom de l\'élément:', name);
             if (newName) {
                 $.ajax({
-                    url: '../../public/api.php?action=update',
+                    url: '../controllers/ItemController.php?action=update',
                     method: 'POST',
                     data: { id: id, name: newName },
                     success: function (response) {
@@ -82,15 +81,22 @@
                 });
             }
         }
-        $('#addForm').submit(function (e) {
+          // Ajouter un élément
+          $('#addForm').submit(function (e) {
             e.preventDefault();
             $.ajax({
-                url: '../../public/api.php?action=create',
+                url: '../controllers/ItemController.php?action=create',
                 method: 'POST',
                 data: $(this).serialize(),
                 success: function (response) {
-                    alert('Élément ajouté avec succès');
-                    loadItems();
+                    if (response.success) {
+                        loadItems();
+                    } else {
+                        console.error("Erreur lors de l'ajout de l'élément : ", response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Erreur lors de l'ajout de l'élément : ", error);
                 }
             });
         });
@@ -99,7 +105,7 @@
         $(document).on('click', '.deleteBtn', function () {
             const id = $(this).data('id');
             $.ajax({
-                url: '../../public/api.php?action=delete',
+                url: '../controllers/ItemController.php?action=delete',
                 method: 'POST',
                 data: { id: id },
                 success: function (response) {
