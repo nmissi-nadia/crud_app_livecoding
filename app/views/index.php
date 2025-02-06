@@ -91,6 +91,7 @@
                 success: function (response) {
                     if (response.success) {
                         loadItems();
+                        $('#name').val('');
                     } else {
                         console.error("Erreur lors de l'ajout de l'élément : ", response.message);
                     }
